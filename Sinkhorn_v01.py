@@ -1,5 +1,4 @@
 import numpy as np
-import numba
 import idx2numpy
 from numba import jit
 @jit(nopython=True)
