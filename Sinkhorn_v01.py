@@ -19,3 +19,5 @@ def Sinkhorn(r, C, M, lamda, tol = 1e-7):
         d = np.sum(u * ((K * M) @ v), axis = 0)
         niter = niter + 1
     return d[0], niter
+
+
