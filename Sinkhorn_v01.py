@@ -1,5 +1,4 @@
 import numpy as np
-import idx2numpy
 from numba import jit
 @jit(nopython=True)
 def Sinkhorn(r, C, M, lamda, maxiter = 10000, tol = 1e-7):
