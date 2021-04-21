@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def sample_to_prob_vec(p_sample, q_sample, sigma = 0):
     if sigma == 0:
         p_final_sample = p_sample
