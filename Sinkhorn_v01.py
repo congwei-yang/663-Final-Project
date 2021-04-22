@@ -1,7 +1,7 @@
 import numpy as np
 from numba import jit
 @jit(nopython=True)
-def Sinkhorn(r, C, M, lamda, maxiter = 10000, tol = 1e-7):
+def Sinkhorn(r, C, M, lamda, maxiter = 10000, tol = 1e-6):
     M = M[r > 0]
     r = r[r > 0]
     K = np.exp(-lamda * M)

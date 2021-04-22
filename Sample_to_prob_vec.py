@@ -6,12 +6,10 @@ def sample_to_prob_vec(p_sample, q_sample, sigma = 0):
         p_final_sample = p_sample
         q_final_sample = q_sample
     else:
-        t_p = (sigma ** 2) / (np.var(p_sample) + sigma ** 2)
-        t_q = (sigma ** 2) / (np.var(q_sample) + sigma ** 2)
         p_normal_sample = np.random.normal(loc=0, scale=sigma, size=len(p_sample))
         q_normal_sample = np.random.normal(loc=0, scale=sigma, size=len(q_sample))
-        p_final_sample = (1 - t_p) * p_sample + t_p * p_normal_sample
-        q_final_sample = (1 - t_q) * q_sample + t_q * q_normal_sample
+        p_final_sample = p_sample + p_normal_sample
+        q_final_sample = q_sample + q_normal_sample
 
     p_vec = np.repeat(1 / len(p_final_sample), len(p_final_sample))
     q_vec = np.repeat(1 / len(q_final_sample), len(q_final_sample))

@@ -1,4 +1,3 @@
-import numpy as np
 from numpy import zeros, reshape, log, exp
 from numpy import sum as npsum
 from numba import jit
@@ -16,7 +15,7 @@ def col_softmin(A, lam):
     return result
 
 @jit(nopython = True, parallel = True)
-def log_domain_sinkhorn_2(lam, M, r, c):
+def log_domain_sinkhorn_2(r, c, M, lam, tol = 1e-6, maxiter = 1000):
     d = len(r)
     epsilon = 1/lam
     f_prev = zeros(d)
@@ -26,12 +25,11 @@ def log_domain_sinkhorn_2(lam, M, r, c):
     dist_prev = 0
     dist = 10
     iteration = 0
-    while abs(dist - dist_prev) > 1e-300:
+    while abs(dist - dist_prev) > tol:
         f_prev = f
         g_prev = g
         f = row_softmin(M - reshape(f_prev, (d,1)) - g_prev, lam = lam) + f_prev + epsilon * log(r)
         g = col_softmin(M - reshape(f, (d,1)) - g_prev, lam = lam) + g_prev + epsilon * log(c)
-        iteration += 1
         K_lg = -lam * M
         u_lg = f / epsilon
         v_lg = g / epsilon
@@ -39,4 +37,7 @@ def log_domain_sinkhorn_2(lam, M, r, c):
         P = exp(P_lg)
         dist_prev = dist
         dist = npsum(P*M)
+        iteration += 1
+        if iteration >= maxiter:
+            break
     return [dist, iteration]
