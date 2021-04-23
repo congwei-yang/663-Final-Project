@@ -1,8 +1,3 @@
-<%
-cfg['compiler_args'] = ['-std=c++11']
-cfg['include_dirs'] = ['./eigen-3.3.9']
-setup_pybind11(cfg)
-%>
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
 #include <pybind11/stl.h>
