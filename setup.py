@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 ext_module = [Pybind11Extension(
         "Skh_cpp",
         ["Sinkhorn_663/Skh_cpp.cpp"],
-        include_dirs = ['Sinkhorn_663/eigen', pybind11.get_include()]
+        include_dirs = ['Sinkhorn_663', pybind11.get_include()]
         )]
 
 setuptools.setup(
