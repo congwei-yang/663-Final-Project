@@ -22,6 +22,9 @@ Eigen::VectorXd Sinkhorn_cpp(Eigen::VectorXd r, Eigen::MatrixXd C, Eigen::Matrix
         Eigen::MatrixXd d_mat = u.array()*((K.array()*M.array()).matrix()*v).array();
         d = d_mat.colwise().sum();
         niter = niter + 1;
+        if (((d - d_prev).array().abs()).maxCoeff() <= tol){
+          break;
+        }
     }
     return d;
 }
