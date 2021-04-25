@@ -15,7 +15,7 @@ def Sinkhorn(r, C, M, lamda=20, tol=1e-6, maxiter=50, log_domain=False,
         return results
     elif cpp == True:
         return Sinkhorn_cpp(r, C, M, lamda, tol, maxiter)
-    elif parallel =  True:
+    elif parallel == True:
         return Sinkhorn_numba_parallel(r, C, M, lamda, tol, maxiter)
     else:
         return Sinkhorn_numba(r, C, M, lamda, tol, maxiter)

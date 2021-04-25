@@ -1,5 +1,5 @@
 import numpy as np
-from numba import jit
+from numba import jit, prange
 @jit(nopython=True)
 def Sinkhorn_numba(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
     M = M[r > 0]
