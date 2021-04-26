@@ -1,7 +1,7 @@
 import numpy as np
 from numba import jit, prange
 @jit(nopython=True)
-def Sinkhorn_numba(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
+def sinkhorn_numba(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
     """
     Numba version of Sinkhorn function
     :param r: Source empirical measure
@@ -30,7 +30,7 @@ def Sinkhorn_numba(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
     return d[0], i
 
 @jit(nopython=True, parallel = True)
-def Sinkhorn_numba_parallel(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
+def sinkhorn_numba_parallel(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
     """
     Numba version of Sinkhorn function with numba parallel
     :param r: Source empirical measure

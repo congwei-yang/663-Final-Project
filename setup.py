@@ -6,13 +6,13 @@ with open("README.md", "r") as fh:
     README = fh.read()
 
 ext_module = [Pybind11Extension(
-        "Skh_cpp",
-        ["Sinkhorn_663/Skh_cpp.cpp"],
-        include_dirs = ['Sinkhorn_663', pybind11.get_include()]
+        "skh_cpp",
+        ["sinkhorn_663/skh_cpp.cpp"],
+        include_dirs = ['sinkhorn_663', pybind11.get_include()]
         )]
 
 setuptools.setup(
-    name="Sinkhorn_663",
+    name="sinkhorn_663",
     version="0.1",
     author="Congwei Yang, Haoliang Zheng, Yijia Zhang",
     author_email="congwei.yang@duke.edu, haoliang.zheng@duke.edu, yijia.zhang912@duke.edu",

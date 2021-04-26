@@ -5,7 +5,7 @@
 #include <vector>
 namespace py = pybind11;
 
-Eigen::VectorXd Sinkhorn_cpp(Eigen::VectorXd r, Eigen::MatrixXd C, Eigen::MatrixXd M, double lamda, double tol, int maxiter){
+Eigen::VectorXd sinkhorn_cpp(Eigen::VectorXd r, Eigen::MatrixXd C, Eigen::MatrixXd M, double lamda, double tol, int maxiter){
     /**
     *sinkhorn function in cpp with eigen.
     *param r: source empirical measure
@@ -39,7 +39,7 @@ Eigen::VectorXd Sinkhorn_cpp(Eigen::VectorXd r, Eigen::MatrixXd C, Eigen::Matrix
 }
 
 
-PYBIND11_MODULE(Skh_cpp, m) {
-    m.doc() = "Sinkhorn cpp function";
-    m.def("Sinkhorn_cpp", &Sinkhorn_cpp, "A Sinkhorn function");
+PYBIND11_MODULE(skh_cpp, m) {
+    m.doc() = "sinkhorn cpp function";
+    m.def("sinkhorn_cpp", &sinkhorn_cpp, "A sinkhorn function");
 }
