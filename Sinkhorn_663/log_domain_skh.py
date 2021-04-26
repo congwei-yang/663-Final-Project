@@ -27,7 +27,7 @@ def col_softmin(A, lam):
     return result
 
 @jit(nopython = True, parallel = True)
-def log_domain_sinkhorn_2(r, c, M, lam, tol = 1e-6, maxiter = 1000):
+def log_domain_sinkhorn(r, c, M, lam, tol = 1e-6, maxiter = 10000):
     """
     Computes Sinkhorn distance between empirical measure r and c in log domain
     :param r: Source empirical measure

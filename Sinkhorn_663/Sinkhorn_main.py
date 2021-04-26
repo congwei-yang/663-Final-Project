@@ -1,9 +1,8 @@
 from .Sinkhorn_numba import Sinkhorn_numba, Sinkhorn_numba_parallel
-from .log_domain_skh import log_domain_sinkhorn_2
-from Skh_cpp import Sinkhorn_cpp
+from .log_domain_skh import log_domain_sinkhorn
 import numpy as np
 
-def Sinkhorn(r, C, M, lamda=20, tol=1e-6, maxiter=50, log_domain=False, parallel=False):
+def Sinkhorn(r, C, M, lamda=20, tol=1e-6, maxiter=10000, log_domain=False, parallel=False):
     """
     A main sinkhorn function to call appropriate sinkhorn function according to user input
     :param r: Source empirical measure
@@ -22,7 +21,7 @@ def Sinkhorn(r, C, M, lamda=20, tol=1e-6, maxiter=50, log_domain=False, parallel
         N = np.shape(C)[1]
         results = np.zeros(N)
         for i in range(N):
-            results[i] = log_domain_sinkhorn_2(r, C[:, i], M, lamda, tol, maxiter)[0]
+            results[i] = log_domain_sinkhorn(r, C[:, i], M, lamda, tol, maxiter)[0]
         return results
     elif parallel == True:
         return Sinkhorn_numba_parallel(r, C, M, lamda, tol, maxiter)
