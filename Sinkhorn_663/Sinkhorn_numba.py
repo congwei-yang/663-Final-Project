@@ -2,6 +2,16 @@ import numpy as np
 from numba import jit, prange
 @jit(nopython=True)
 def Sinkhorn_numba(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
+    """
+    Numba version of Sinkhorn function
+    :param r: Source empirical measure
+    :param C: Target empirical measures. C has a format of a matrix, with columns being target empirical measures
+    :param M: Cost matrix
+    :param lamda: Entropy regularization parameter
+    :param tol: Accuracy tolerance
+    :param maxiter: Maximum number of iterations
+    :return: An array of sinkhorn distances, number of iteration taken
+    """
     M = M[r > 0]
     r = r[r > 0]
     K = np.exp(-lamda * M)
@@ -21,6 +31,16 @@ def Sinkhorn_numba(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
 
 @jit(nopython=True, parallel = True)
 def Sinkhorn_numba_parallel(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
+    """
+    Numba version of Sinkhorn function with numba parallel
+    :param r: Source empirical measure
+    :param C: Target empirical measures. C has a format of a matrix, with columns being target empirical measures
+    :param M: Cost matrix
+    :param lamda: Entropy regularization parameter
+    :param tol: Accuracy tolerance
+    :param maxiter: Maximum number of iterations
+    :return: An array of sinkhorn distances, number of iteration taken
+    """
     M = M[r > 0]
     r = r[r > 0]
     K = np.exp(-lamda * M)

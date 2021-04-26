@@ -4,10 +4,8 @@ import numpy as np
 def flatten(data):
     """
     Flatten a list of image data from matrices to vectors.
-    Args
-        data: a list of image matrices
-    Returns
-        a list of image vectors, which can be put into sinkhorn functions.
+    :param data: A list of imate matrices
+    :return: A list of image vectors, which can be put into sinkhorn functions
     """
     data_flat = []
     for i in range(0, len(data)):
