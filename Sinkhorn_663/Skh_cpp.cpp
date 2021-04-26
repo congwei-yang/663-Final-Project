@@ -6,6 +6,15 @@
 namespace py = pybind11;
 
 Eigen::VectorXd Sinkhorn_cpp(Eigen::VectorXd r, Eigen::MatrixXd C, Eigen::MatrixXd M, double lamda, double tol, int maxiter){
+    /**
+    *sinkhorn function in cpp with eigen.
+    *param r: source empirical measure
+    *param C: Target empirical measures. C has the form of a matrix, with columns being target empirical measures
+    *param M: Cost matrix
+    *param lamda: Entropy regularization parameter
+    *param tol: Accuracy tolerance
+    *param maxiter: Maximum number of iterations
+    */
     Eigen::MatrixXd K = exp(-lamda * M.array());
     Eigen::MatrixXd KT = K.transpose();
     int N = C.cols();

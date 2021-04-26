@@ -3,11 +3,9 @@ import numpy as np
 
 def cost_mat(d):
     """
-    Compute the cost matrix for `d` dimension image matrix.
-    Args
-        d: the dimension of the image matrix
-    Returns
-        cost matrix for the image matrix. This can be an input `M` in sinkhorn functions.
+    Compute the cost matrix for 'd' dimension image matrix
+    :param d: The dimension of the image matrix
+    :return: Cost matrix for the image matrix. This can be an input 'M' in sinkhorn functions.
     """
     M = np.zeros((d**2, d**2))
     for i in range(1, d**2 + 1):
