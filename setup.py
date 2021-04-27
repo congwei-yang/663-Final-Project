@@ -13,10 +13,10 @@ ext_module = [Pybind11Extension(
 
 setuptools.setup(
     name="sinkhorn_663",
-    version="0.4",
+    version="1.0",
     author="Congwei Yang, Haoliang Zheng, Yijia Zhang",
     author_email="congwei.yang@duke.edu, haoliang.zheng@duke.edu, yijia.zhang912@duke.edu",
-    description="Optimized Sinkhorn Optimal transport algorithm",
+    description="Optimized Sinkhorn distance algorithm",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/congwei-yang/663-Final-Project/sinkhorn_663",
