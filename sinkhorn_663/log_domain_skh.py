@@ -62,4 +62,4 @@ def log_domain_sinkhorn(r, c, M, lam, tol = 1e-6, maxiter = 10000):
         iteration += 1
         if iteration >= maxiter:
             break
-    return [dist, iteration]
+    return dist, iteration

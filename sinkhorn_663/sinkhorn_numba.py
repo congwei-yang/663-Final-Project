@@ -27,7 +27,7 @@ def sinkhorn_numba(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
         u = u_new
     v = C/(K.T @ u)
     d = np.sum(u * ((K * M) @ v), axis = 0)
-    return d[0], i
+    return d, i
 
 @jit(nopython=True, parallel = True)
 def sinkhorn_numba_parallel(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
@@ -56,4 +56,4 @@ def sinkhorn_numba_parallel(r, C, M, lamda, tol = 1e-6, maxiter = 10000):
         u = u_new
     v = C/(K.T @ u)
     d = np.sum(u * ((K * M) @ v), axis = 0)
-    return d[0], i
+    return d, i
