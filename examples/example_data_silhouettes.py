@@ -44,5 +44,5 @@ for i in range(9):
     for j in range(9):
         compare_result[i, j] = sinkhorn(compare_img_flat[i], compare_img_flat[j], M_img, lamda, tol, maxiter)[0]
 result_df = pd.DataFrame(compare_result, index=all_idx, columns=all_idx).round(2)
-result_df.to_pickle("../report/result_df")
+result_df.to_pickle("report/result_df")
 print(result_df)
