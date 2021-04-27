@@ -15,7 +15,7 @@ test_samp2 = np.random.uniform(low=5, high=6, size=2000)
 M, r, c = sample_to_prob_vec(test_samp1, test_samp2, sigma=0)
 # compare
 for i in range(61):
-    skh_res[i] = sinkhorn_cpp(r, c, M, lamda[i], tol, maxiter)[0]
+    skh_res[i] = sinkhorn(r, c, M, lamda[i], tol, maxiter)[0]
     log_skh_res[i] = sinkhorn(r, c, M, lamda[i], tol, maxiter, log_domain=True)[0]
 plt.figure(figsize=(14, 8))
 plt.plot(lamda, skh_res, label="Sinkhorn")
