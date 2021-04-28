@@ -20,6 +20,10 @@ To import all the modules and functions, use the following code:
 
 `from skh_cpp import sinkhorn_cpp`
 
+# [Eigen](https://github.com/congwei-yang/663-Final-Project/tree/main/sinkhorn_663/Eigen)
+
+For the purpose of optimization, we write the function in c++ and use pybind11 to wrap them as `sinkhorn_cpp`. Note that we use **eigen** library to help us do matrix computation. To make our package function well, we include necessary documents of **eigen** in our package directory, which is everything in `sinkhorn_663/Eigen`. That's why Github shows our repository mostly composed of c++. Also, before uploading our package, we add a `MANIFEST.in` with `recursive-include sinkhorn_663/Eigen *` to claim that the Eigen directory is included in our package.
+
 # [Data](https://github.com/congwei-yang/663-Final-Project/tree/main/data)
 
 In `data/` directory, we store two data sets we use for examples. One is MNIST digits dataset, the other is CalTech 101 Silhouettes Data Set. They are stored in `.mat` format. You can learn how to read in and extract the information from our examples.
